@@ -8,11 +8,6 @@
 import UIKit
 
 class SettingsViewController : UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-    }
     
     @IBAction func darkModeSwitch(_ sender: UISwitch) {
         let appDelegate = UIApplication.shared.windows.first

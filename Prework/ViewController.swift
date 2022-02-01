@@ -7,9 +7,8 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class ViewController: UIViewController, UITextFieldDelegate {
 
-    
     @IBOutlet weak var billAmountTextField: UITextField!
     @IBOutlet weak var tipAmountLabel: UILabel!
     @IBOutlet weak var tipControl: UISegmentedControl!
@@ -18,12 +17,9 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     @IBOutlet weak var partySizeStepper: UIStepper!
     @IBOutlet weak var totalPartySizeLabel: UILabel!
     @IBOutlet weak var splitLabel: UILabel!
-    @IBOutlet weak var currencyLabel1: UILabel!
-    @IBOutlet weak var currencyLabel2: UILabel!
-    @IBOutlet weak var currencyPicker: UIPickerView!
-    
-    // Picker data
-    let pickerData = [String](arrayLiteral: "USD $","CNY ¥", "NFTs","BTC","GPB £","SGD $","JPY ¥","HKD $","EUR €","CAD $")
+
+    let userDefaults = UserDefaults()
+    let defaults = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,20 +27,36 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         // Do any additional setup after loading the view.
         billAmountTextField.becomeFirstResponder()
         
+        // Set numberPad
+        billAmountTextField.keyboardType = UIKeyboardType.decimalPad
+        
         // Set the title in navigation bar
         self.title = "Tip Calculator"
         
         // Set stepper
         partySizeStepper.wraps = true
         partySizeStepper.autorepeat = true
+        partySizeStepper.minimumValue = 1
         partySizeStepper.maximumValue = 20
         
-        currencyPicker.delegate = self
+        // Save data when closed app
+        billAmountTextField.delegate = self
+        
+        if let value = userDefaults.value(forKey: "billAmount") as? String {
+            billAmountTextField.text = value
+        }
+        
+        // UI animated
+        billAmountTextField.alpha = 0
+        tipAmountLabel.alpha = 0
+        splitLabel.alpha = 0
+        totalLabel.alpha = 0
     }
     
-    override func didReceiveMemoryWarning() {
-            super.didReceiveMemoryWarning()
-            // Dispose of any resources that can be recreated.
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        userDefaults.setValue(billAmountTextField.text, forKey: "billAmount")
+        billAmountTextField.resignFirstResponder()
+        return true
     }
     
      @IBAction func calculateTip(_ sender: Any) {
@@ -62,12 +74,23 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
          // let size = Double(totalPartySizeLabel.text!) ?? 0
          let split = total / size
          
+         // Update locale-specific currency and currency thousands separators
+         let formatter = NumberFormatter()
+         formatter.locale = Locale.current
+         formatter.numberStyle = .currency
+         
          // Update tip amount label
-         tipAmountLabel.text = String(format: "%.2f", tip)
+         if let formattedTipAmount = formatter.string(from: tip as NSNumber) {
+             tipAmountLabel.text = formattedTipAmount
+         }
          // Update split amount
-         splitLabel.text = String(format: "%.2f", split)
+         if let formattedSplitAmount = formatter.string(from: split as NSNumber) {
+             splitLabel.text = formattedSplitAmount + " each"
+         }
          // Update total amount
-         totalLabel.text = String(format: "%.2f", total)
+         if let formattedTotalAmount = formatter.string(from: total as NSNumber) {
+             totalLabel.text = formattedTotalAmount
+         }
     }
     
     // Adjust Party Size
@@ -75,23 +98,35 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         totalPartySizeLabel.text = Int(sender.value).description
     }
     
-    // Num. of columns of data
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("view will appear")
+        // This is a good place to retrieve the default tip percentage from UserDefaults
+        // and use it to update the tip amount
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        print("view did appear")
+        
+        UIView.animate(withDuration: 1, animations:{ self.billAmountTextField.alpha = 0.6
+        }) { (true) in self.showTip()
+        }
     }
     
-    // Num. of rows of data
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return pickerData.count
+    func showTip() {
+        UIView.animate(withDuration: 1, animations:{ self.tipAmountLabel.alpha = 0.6
+        }) { (true) in self.showSpilt()
+        }
     }
     
-    // Return picker data
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return pickerData[row]
+    func showSpilt() {
+        UIView.animate(withDuration: 1, animations:{ self.splitLabel.alpha = 0.6
+        }) { (true) in self.showTotal()
+        }
     }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        currencyLabel1.text = pickerData[row]
-        currencyLabel2.text = pickerData[row]
+    func showTotal() {
+        UIView.animate(withDuration: 1, animations:{ self.totalLabel.alpha = 0.6
+        })
     }
 }
