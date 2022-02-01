@@ -174,29 +174,73 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dark Mode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a36-GL-ftj">
-                                <rect key="frame" x="16" y="412" width="88.333333333333329" height="21"/>
+                                <rect key="frame" x="16" y="510" width="88.333333333333329" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Kdu-wC-JbX">
-                                <rect key="frame" x="109.66666666666652" y="407" width="51" height="31"/>
+                                <rect key="frame" x="109.66666666666669" y="505" width="51" height="31"/>
                                 <connections>
                                     <action selector="darkModeSwitch:" destination="Ldp-wf-JQS" eventType="valueChanged" id="DTa-LH-Skk"/>
                                 </connections>
                             </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Default Tip Amount" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4po-8s-gAL">
+                                <rect key="frame" x="94" y="125" width="202" height="38"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h6G-vA-29O">
+                                <rect key="frame" x="0.0" y="221" width="390" height="216"/>
+                            </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tip 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mVz-SI-fky">
+                                <rect key="frame" x="52" y="192" width="38.666666666666657" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tip 2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dw6-47-Vmo">
+                                <rect key="frame" x="176" y="192" width="38.333333333333343" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tip 3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="06h-oq-fGi" userLabel="Tip 3">
+                                <rect key="frame" x="301" y="192" width="39.333333333333314" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="acK-l9-MMd"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="mVz-SI-fky" firstAttribute="top" secondItem="acK-l9-MMd" secondAttribute="top" constant="104" id="1YZ-1d-j8a"/>
                             <constraint firstItem="Kdu-wC-JbX" firstAttribute="leading" secondItem="a36-GL-ftj" secondAttribute="trailing" constant="5.3333333333334849" id="2Re-8u-Hp5"/>
+                            <constraint firstItem="mVz-SI-fky" firstAttribute="leading" secondItem="acK-l9-MMd" secondAttribute="leading" constant="52" id="Ewt-F3-daE"/>
+                            <constraint firstItem="06h-oq-fGi" firstAttribute="leading" secondItem="dw6-47-Vmo" secondAttribute="trailing" constant="86.666666666666828" id="Fdi-ZT-Gwx"/>
                             <constraint firstItem="a36-GL-ftj" firstAttribute="leading" secondItem="1DP-L7-p61" secondAttribute="leadingMargin" id="J4K-2z-wSq"/>
+                            <constraint firstItem="mVz-SI-fky" firstAttribute="firstBaseline" secondItem="dw6-47-Vmo" secondAttribute="firstBaseline" id="PXL-XH-xoQ"/>
+                            <constraint firstItem="h6G-vA-29O" firstAttribute="leading" secondItem="1DP-L7-p61" secondAttribute="leading" id="PrL-dg-WMg"/>
+                            <constraint firstItem="4po-8s-gAL" firstAttribute="top" secondItem="acK-l9-MMd" secondAttribute="top" constant="37" id="Wbt-oL-VTH"/>
+                            <constraint firstItem="dw6-47-Vmo" firstAttribute="baseline" secondItem="06h-oq-fGi" secondAttribute="baseline" id="WnP-ny-YoC"/>
                             <constraint firstItem="Kdu-wC-JbX" firstAttribute="centerY" secondItem="a36-GL-ftj" secondAttribute="centerY" id="X7h-rV-p5i"/>
+                            <constraint firstItem="dw6-47-Vmo" firstAttribute="leading" secondItem="mVz-SI-fky" secondAttribute="trailing" constant="85.333333333333314" id="XeX-dv-143"/>
+                            <constraint firstAttribute="trailing" secondItem="h6G-vA-29O" secondAttribute="trailing" id="f9H-rn-R2g"/>
+                            <constraint firstItem="4po-8s-gAL" firstAttribute="leading" secondItem="acK-l9-MMd" secondAttribute="leading" constant="94" id="glF-9e-oG6"/>
+                            <constraint firstItem="dw6-47-Vmo" firstAttribute="top" secondItem="4po-8s-gAL" secondAttribute="bottom" constant="29" id="jcp-Hx-4YR"/>
+                            <constraint firstItem="h6G-vA-29O" firstAttribute="top" secondItem="mVz-SI-fky" secondAttribute="bottom" constant="8" symbolic="YES" id="q8v-zs-AZL"/>
+                            <constraint firstItem="dw6-47-Vmo" firstAttribute="centerX" secondItem="4po-8s-gAL" secondAttribute="centerX" id="rpj-TK-3QF"/>
                             <constraint firstItem="Kdu-wC-JbX" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="a36-GL-ftj" secondAttribute="trailing" constant="5.3333333333334849" id="sou-mh-cs5"/>
-                            <constraint firstItem="a36-GL-ftj" firstAttribute="top" secondItem="acK-l9-MMd" secondAttribute="top" constant="324" id="xoo-Vw-y95"/>
+                            <constraint firstItem="dw6-47-Vmo" firstAttribute="centerX" secondItem="h6G-vA-29O" secondAttribute="centerX" id="xb3-O6-pGa"/>
+                            <constraint firstItem="a36-GL-ftj" firstAttribute="top" secondItem="acK-l9-MMd" secondAttribute="top" constant="422" id="xoo-Vw-y95"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="7op-yX-S2W"/>
+                    <connections>
+                        <outlet property="tipPicker" destination="h6G-vA-29O" id="Ikf-vT-qXg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KbU-dv-XMN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

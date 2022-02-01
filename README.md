@@ -4,7 +4,7 @@
 
 Submitted by: **Letao Zhang**
 
-Time spent: **2** hours spent in total
+Time spent: **2.5** hours spent in total
 
 ## User Stories
 
@@ -24,12 +24,13 @@ The following **additional** features are implemented:
 
 - [x] List anything else that you can get done to improve the app functionality!
 * [x] Adding dark mode in Settings
+* [x] Setting for tip amount using UIPickerView only, not changing back in main ViewController
 
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
 
-![](https://i.imgur.com/BL8C9DK.gif)
+![](https://i.imgur.com/da6XUE7.gif)
 
 <img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
@@ -54,4 +55,5 @@ Describe any challenges encountered while building the app.
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
     See the License for the specific language governing permissions and
     limitations under the License.
+
 
